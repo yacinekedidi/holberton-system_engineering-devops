@@ -17,7 +17,7 @@ int infinite_while(void)
 }
 
 /**
- * main - sleep for eternity
+ * main - poor zombies their parents won't ever wait for them
  * @void : nothing
  * Return: Always 0.
  */
