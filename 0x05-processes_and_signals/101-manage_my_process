@@ -6,11 +6,11 @@ if [[ "$1" = "start" ]]; then
 	echo "$!" > "$f"
 	echo "manage_my_process started"
 elif [[ "$1" = "stop" ]]; then
-	pkill -f ./manage_my_process --signal 19
+	pkill -f ./manage_my_process --signal 9
 	rm -rf "$f"
 	echo "manage_my_process stopped"
 elif [[ $1 = "restart" ]]; then
-	pkill -f ./manage_my_process --signal 19
+	pkill -f ./manage_my_process --signal 9
 	rm -rf "$f"
 	./manage_my_process &
 	echo "$!" > "$f"
