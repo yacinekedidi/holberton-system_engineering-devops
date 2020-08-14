@@ -4,9 +4,9 @@ x="\
 frontend load_balancer
     bind *:80
     mode http
-    default_backend foo
+    default_backend holb
     
-backend foo
+backend holb
     balance roundrobin
     server 1432-web-01 35.190.159.176:80 check
     server 1432-web-02 35.229.61.48:80 check
