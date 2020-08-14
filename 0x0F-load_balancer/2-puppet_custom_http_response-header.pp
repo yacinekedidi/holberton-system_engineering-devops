@@ -1,4 +1,4 @@
-#  custom HTTP header response, but with Puppet.
+#  HTTP header response with Puppet.
 
 exec { 'add Header':
 command => 'sudo apt-get -y install haproxy;
