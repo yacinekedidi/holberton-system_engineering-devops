@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # Install haproxy
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.0
+apt-get -y update
+apt-get -y install haproxy=2.0.\*
+echo "ENABLED=1" >> /etc/default/haproxy
+
 x="\
 frontend load_balancer
     bind *:80
@@ -11,9 +17,5 @@ backend holb
     server 1432-web-01 35.190.159.176:80 check
     server 1432-web-02 35.229.61.48:80 check
 "
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.0
-apt-get -y update
-apt-get -y install haproxy=2.0.\*
 echo "$x" >> /etc/haproxy/haproxy.cfg
 service haproxy start
