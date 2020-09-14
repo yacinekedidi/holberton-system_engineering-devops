@@ -9,18 +9,14 @@ if __name__ == "__main__":
     r = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                      .format(argv[1]))
     user = r.json()
-    r = requests.get("https://jsonplaceholder.typicode.com/todos/")
+    r = requests.get("https://jsonplaceholder.typicode.com/todos/",
+                     params={"userId": argv[1]})
     todos = r.json()
-    finished = 0
-    unfinished = 0
     tasks = []
     for t in todos:
-        if t.get("userId") == user.get("id") and t.get("completed"):
-            finished += 1
+        if t.get("completed"):
             tasks.append(t.get("title"))
-        elif t.get("userId") == user.get("id"):
-            unfinished += 1
     print("Employee {} is done with tasks({}/{}):"
-          .format(user.get("name"), finished, finished + unfinished))
+          .format(user.get("name"), len(tasks), len(todos)))
     for i in tasks:
         print("\t{}".format(i))
