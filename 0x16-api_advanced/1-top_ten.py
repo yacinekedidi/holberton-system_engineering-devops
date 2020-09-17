@@ -20,6 +20,5 @@ def top_ten(subreddit):
         info = r.get("data")
         children = info.get("children")
         for post in children:
-            post_info = post.get("data")
-            title = post_info.get("title")
+            title = post.get("data").get("title")
             print(title)
