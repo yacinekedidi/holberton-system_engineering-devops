@@ -32,14 +32,10 @@ def count_words(subreddit, word_list, words_count={}, after=""):
         if len(words_count) == 0:
             print()
             return
-        words = [w for w in sorted(words_count.values())]
-        words = words[::-1]
-        d = {}
-        for i in words_count.keys():
-            for j in words:
-                if words_count[i] == j:
-                    d[i] = j
-        words_count = d
+        # lambda item: (-item[1], item[0])
+        # reverses the  list to be ordered by value
+        words_count = {k: v for k, v in sorted(words_count.items(),
+                       key=lambda item: (-item[1], item[0]))}
         [print("{}: {}".format(k, v)) for k, v in words_count.items()]
     else:
         count_words(subreddit, word_list, words_count, after)
