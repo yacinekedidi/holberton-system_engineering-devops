@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# reload Gunicorn in a graceful way by making gunicorn reread its configuration file
+pkill -HUP gunicorn
